@@ -1,11 +1,7 @@
 import { Schema,model } from "mongoose";
 
 const schema = new Schema({
-    profile:{
-        type: String,
-        required: false,
-        unique: false
-    },
+   
     username: {
         type:String,
         required: true,
@@ -21,6 +17,16 @@ const schema = new Schema({
         type :String,
         required:true,
         unique: false
+    },
+     profile:{
+        type: String,
+        required: false,
+        unique: false
+    },
+    bio:{
+        type:String,
+        required:false,
+        unique:false
     }
 });
 
