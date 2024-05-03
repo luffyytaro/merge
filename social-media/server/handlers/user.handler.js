@@ -6,7 +6,7 @@ const {sign} = jwt;
 
 export async function register(req, res) {
     try {
-        let {username, email, password } =req.body;
+       let { username, email, password } = req.body;
        if(username.length <4) return res.status(400).json({msg:"username is too small"});
        if(!/[a-z0-9\.]+@[a-z0-9]+\.[a-z]{2,6}/.test(email)) return res.status(400).json({msg:"invalid email"});
        if(password.length <4) return res.status(400).json({msg:"password not big enough!"});
@@ -28,14 +28,14 @@ export async function register(req, res) {
 }
 
 
-export default function login(req,res) {
+export async function login(req,res) {
     try {
-        let { username, password } = req.body;
-        let user =  userModel.findOne({username});
+        let {username, password } = req.body;
+        let user = await userModel.findOne({username});
        if(!user) return res.status(401).json({msg:"Invalid username or password"});
-       let isValid =  bcrypt.compare(password,user.password);
+       let isValid = await bcrypt.compare(password,user.password);
         if(isValid){
-            let token =  sign({
+            let token = await sign({
                 username: user.username,
                 userId:user._id
             },process.env.SECRET_KEY,{
