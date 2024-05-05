@@ -20,7 +20,7 @@ export default function Register(){
     validateOnChange: false,
     onSubmit:(values) =>{
         let {cpassword, ...rest} = values;
-        let res = axios.post("/api/register",rest);
+        let res = axios.post("/api/register", rest);
         toast.promise(res,{
             loading:"registering",
             success:()=>{
@@ -32,24 +32,24 @@ export default function Register(){
     }
    });
     return(
-        <main className="size-full bg-blue-600 flex items-center justify-center">
-            <section>
-                <h2>SignUp to Adhigram</h2>
-                <form onSubmit={formik.handleSubmit}>
+        <main className="size-full bg-gradient-to-b from-green-400 to-blue-500 flex items-center justify-center">
+            <section className="max-h-[30rem] h-full max-w-[25rem] w-full bg-white shadow-lg rounded-md">
+                <h2 className="text-center p-8 text-2xl font-bold">SignUp to Adhigram</h2>
+                <form onSubmit={formik.handleSubmit} className="flex items-center justify-center flex-col gap-2 w-full">
                     <Input type="text" placeholder="username"{...formik.getFieldProps("username")}/>
-                    <article>
+                    <article className="text-red-600 text-lg">
                         {formik.errors.username}
                     </article>
                     <Input type="email" placeholder="email"{...formik.getFieldProps("email")}/>
-                    <article>
+                    <article className="text-red-600 text-sm">
                         {formik.errors.email}
                     </article>
                     <Input type="password" placeholder="password"{...formik.getFieldProps("password")}/>
                     <Input type="password" placeholder="confirm password"{...formik.getFieldProps("cpassword")}/>
-                    <article>
+                    <article className="text-red-600 text-sm">
                         {formik.errors.password}
                     </article>
-                    <Button>register</Button>
+                    <Button>Register</Button>
                     <div className="w-5/6 h-0.5 bg-black"></div>
                     <article>Already have an account?<Link to={"/login"}>Login</Link></article>
                 </form>

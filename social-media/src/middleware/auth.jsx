@@ -1,4 +1,4 @@
-import {Navigate} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 export default function Auth({children}) {
     let token = localStorage.getItem("token");
