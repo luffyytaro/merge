@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/input";
 import { useFormik } from "formik";
-import validate from "../validation/register";
+import validate from "../validation/login";
 import toast from "react-hot-toast";
-import Button from "../components/button";
 import axios from "axios";
+import Button from "../components/button";
 
 export default function Login(){
 
@@ -18,6 +18,7 @@ export default function Login(){
         validateOnBlur: false,
         validateOnChange:false,
         onSubmit:(values) =>{
+            console.log(values);
             let res = axios.post("/api/login", values);
             toast.promise(res,{
                 loading:"Logging in...",
@@ -45,7 +46,7 @@ export default function Login(){
                     <article className="text-red-600 text-lg">
                         {formik.errors.password}
                     </article>
-                   <Button>Login</Button>
+                   <Button type="submit">Login</Button>
                    <div className="w-5/6 h-0.5 bg-black"></div>
                    <article>Do not have an account?<Link to={"/register"}>Signup</Link></article>
                 </form>

@@ -1,4 +1,5 @@
 function validate(values) {
+    console.log(values);
     const errors = {};
     if(!/[a-z0-9A-Z]{4,12}/.test(values.username)){
         errors.username = "Invalid username";

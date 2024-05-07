@@ -24,6 +24,11 @@ export default function Profile() {
                     </section>
                 </div>
             </article>
+            <article>Bio</article>
+            <article>
+                <button className="flex-grow bg-gray-400 rounded-md" onClick={() => navigate("/edit-profile")}>Edit-Profile</button>
+                <button className="flex-grow bg-gray-400 rounded-md">Share Profile</button>
+            </article>
         </section>
     );
 }
