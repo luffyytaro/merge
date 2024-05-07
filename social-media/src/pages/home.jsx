@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Profile from "../components/profile";
 import NavBar from "../components/navbar";
+import Post from "../components/post";
+import Search from "../components/search";
+import Profile from "../components/profile";
 
 export default function Home(){
     const navigate = useNavigate();
@@ -13,8 +15,9 @@ export default function Home(){
     return(
         <main className="h-screen">
             <main className="w-full h-full pb-16 lg:ps-16 flex items-center justify-center">
-                {page === "home" && <Profile/>}
-                
+                {page === "home" && <Post/>}
+                {page === "search" && <Search/>}
+                {page === "profile" && <Profile/>}
             </main>
             <NavBar setPage={setPage}/>
             <button onClick={logout}>Logout</button>
