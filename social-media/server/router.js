@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { register,login } from "./handlers/user.handler.js";
+import Profile, { register,login, } from "./handlers/user.handler.js";
+import Auth from "./middle/auth.js";
 
 
 const router = Router();
@@ -7,5 +8,6 @@ const router = Router();
 
 router.route("/register").post(register);
 router.route("/login").post(login);
+router.route("/profile").get(Auth,Profile)
 
 export default router;

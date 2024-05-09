@@ -19,6 +19,7 @@ export default function Register(){
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit:(values) =>{
+        console.log(values);
         let {cpassword, ...rest} = values;
         let res = axios.post("/api/register", rest);
         toast.promise(res,{

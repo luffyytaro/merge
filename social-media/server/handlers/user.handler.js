@@ -50,4 +50,11 @@ export async function login(req,res) {
     }
 }
 
+export default function Profile(req,res){
+   const {userId}=req.user
+   console.log(userId);
+
+    return res.status(200).json({msg:"Login successful"})
+}
+
 
