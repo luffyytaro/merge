@@ -2,6 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
     const navigate = useNavigate();
+
+    const logout = ()=> {
+        localStorage.removeItem("token");
+        navigate("/login", { replace: true})
+    }
     return (
         <section className="h-full w-full lg:w-[40rem]">
             <article className="h-40 w-full p-4 flex">
@@ -30,6 +35,9 @@ export default function Profile() {
                 <button className="flex-grow bg-gray-400 rounded-md">Share Profile</button>
             </article>
                 <div className="w-fill h-0.5 bg-black"></div>
+                <article>
+                <button onClick={logout} className="flex-grow bg-blue-400 rounded-md">Logout</button>
+                </article>
         </section>
         
     );
