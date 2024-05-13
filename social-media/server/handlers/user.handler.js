@@ -50,11 +50,30 @@ export async function login(req,res) {
     }
 }
 
-export default function Profile(req,res){
+export  async function Profile(req,res){
    const {userId}=req.user
+   
    console.log(userId);
+//    try {
+//     let {username, password } = req.body;
+//     let user = await userModel.findOne({username});
+//    if(!user) return res.status(401).json({msg:"Invalid username or password"});
+//    let isValid = await bcrypt.compare(password,user.password);
+//     if(isValid){
+//         let token = await sign({
+//             username: user.username,
+//             userId:user._id
+//         },process.env.SECRET_KEY,{
+//             expiresIn:"24h"
+//         });
+//         return res.status(200).json({msg:"Login successful",token})
+//     }
+//    } catch (error) {
+//     console.log(error);
+//     return res.status(500).json({ msg: "some error occured" });
+//    }
 
-    return res.status(200).json({msg:"Login successful"})
+//     return res.status(200).json({msg:"Login successful"})
 }
 
 

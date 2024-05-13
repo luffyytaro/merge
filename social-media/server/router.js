@@ -1,5 +1,5 @@
 import { Router } from "express";
-import Profile, { register,login, } from "./handlers/user.handler.js";
+import  { register,login,Profile, } from "./handlers/user.handler.js";
 import Auth from "./middle/auth.js";
 
 

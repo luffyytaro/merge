@@ -1,12 +1,34 @@
 import { useNavigate } from "react-router-dom";
+ import { useEffect } from "react";
+ import axios from "axios"
+
 
 export default function Profile() {
     const navigate = useNavigate();
+    let token = localStorage.getItem("token");
 
+    async function getUser(){
+ const res = await   axios.get("http://localhost:5000/api/profile",{
+    headers:{
+        "Authorization": `Bearer ${token}`
+    }
+})
+
+
+   console.log(res);  
+    }
+    useEffect(() => {
+        getUser()
+      });
     const logout = ()=> {
         localStorage.removeItem("token");
         navigate("/login", { replace: true})
     }
+    
+  
+    
+    
+
     return (
         <section className="h-full w-full lg:w-[40rem]">
             <article className="h-40 w-full p-4 flex">
@@ -14,6 +36,7 @@ export default function Profile() {
                     <div className="h-full w-full rounded-full bg-gray-400"></div>
                     <div className="size-6 rounded-full bg-blue-600 flex items-center justify-center text-lg text-white absolute right-4 bottom-4">+</div>
                 </div>
+              
                 <div className="h-full flex-grow flex">
                     <section className="h-full flex-grow flex items-center justify-center flex-col">
                         <div className="font-bold">929</div>
